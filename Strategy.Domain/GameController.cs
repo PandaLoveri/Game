@@ -22,26 +22,26 @@ namespace Strategy.Domain
         /// <summary>
         /// Получить координаты объекта.
         /// </summary>
-        /// <param name="o">Координаты объекта, которые необходимо получить.</param>
+        /// <param name="gameElement">Координаты объекта, которые необходимо получить.</param>
         /// <returns>Координата x, координата y.</returns>       
-        public Coordinates GetObjectCoordinates(GameElement o)
+        public Coordinates GetObjectCoordinates(GameElement gameElement)
         {
-            return new Coordinates(o.X, o.Y);
+            return new Coordinates(gameElement.X, gameElement.Y);
         }
 
         /// <summary>
         /// Может ли юнит передвинуться в указанную клетку.
         /// </summary>
-        /// <param name="u">Юнит.</param>
+        /// <param name="unit">Юнит.</param>
         /// <param name="x">Координата X клетки.</param>
         /// <param name="y">Координата Y клетки.</param>
         /// <returns>
         /// <see langvalue="true" />, если юнит может переместиться
         /// <see langvalue="false" /> - иначе.
         /// </returns>
-        public bool CanMoveUnit(Unit u, int x, int y)
+        public bool CanMoveUnit(Unit unit, int x, int y)
         {
-            if (!u.CanMove(x, y))
+            if (!unit.CanMove(x, y))
                 return false;
 
             return _map.CanMoveUnit(x, y);
@@ -50,50 +50,50 @@ namespace Strategy.Domain
         /// <summary>
         /// Передвинуть юнита в указанную клетку.
         /// </summary>
-        /// <param name="u">Юнит.</param>
+        /// <param name="unit">Юнит.</param>
         /// <param name="x">Координата X клетки.</param>
         /// <param name="y">Координата Y клетки.</param>
-        public void MoveUnit(Unit u, int x, int y)
+        public void MoveUnit(Unit unit, int x, int y)
         {
-            if (!CanMoveUnit(u, x, y))
+            if (!CanMoveUnit(unit, x, y))
                 return;
 
-            u.Move(x, y);
+            unit.Move(x, y);
         }
 
         /// <summary>
         /// Проверить, может ли один юнит атаковать другого.
         /// </summary>
-        /// <param name="au">Юнит, который собирается совершить атаку.</param>
-        /// <param name="tu">Юнит, который является целью.</param>
+        /// <param name="attackUnit">Юнит, который собирается совершить атаку.</param>
+        /// <param name="targetUnit">Юнит, который является целью.</param>
         /// <returns>
         /// <see langvalue="true" />, если атака возможна
         /// <see langvalue="false" /> - иначе.
         /// </returns>
-        public bool CanAttackUnit(Unit au, Unit tu)
+        public bool CanAttackUnit(Unit attackUnit, Unit targetUnit)
         {
-            return au.CanAttack(tu);
+            return attackUnit.CanAttack(targetUnit);
         }
 
         /// <summary>
         /// Атаковать указанного юнита.
         /// </summary>
-        /// <param name="au">Юнит, который собирается совершить атаку.</param>
-        /// <param name="tu">Юнит, который является целью.</param>
-        public void AttackUnit(Unit au, Unit tu)
+        /// <param name="attackUnit">Юнит, который собирается совершить атаку.</param>
+        /// <param name="targetUnit">Юнит, который является целью.</param>
+        public void AttackUnit(Unit attackUnit, Unit targetUnit)
         {
-            if (!CanAttackUnit(au, tu))
+            if (!CanAttackUnit(attackUnit, targetUnit))
                 return;
 
-            au.Attack(tu);
+            attackUnit.Attack(targetUnit);
         }
 
         /// <summary>
         /// Получить изображение объекта.
         /// </summary>
-        public ImageSource GetObjectSource(GameElement o)
+        public ImageSource GetObjectSource(GameElement gameElement)
         {
-            return o.GameElementSource;
+            return gameElement.GameElementSource;
         }
         
     }

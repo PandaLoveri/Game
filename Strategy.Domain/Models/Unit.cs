@@ -73,23 +73,23 @@ namespace Strategy.Domain.Models
         /// <summary>
         /// Проверить, может ли один юнит атаковать другого.
         /// </summary>
-        /// <param name="tu">Юнит, который является целью.</param>
+        /// <param name="targetUnit">Юнит, который является целью.</param>
         /// <returns>
         /// <see langvalue="true" />, если атака возможна
         /// <see langvalue="false" /> - иначе.
         /// </returns>
-        public bool CanAttack(Unit tu)
+        public bool CanAttack(Unit targetUnit)
         {
-            Player ptu = tu.Player;
+            Player playerTargetUnit = targetUnit.Player;
 
-            if (tu.IsDead)
+            if (targetUnit.IsDead)
                 return false;
 
-            if (Player == ptu)
+            if (Player == playerTargetUnit)
                 return false;
 
-            var dx = X - tu.X;
-            var dy = Y - tu.Y;
+            var dx = X - targetUnit.X;
+            var dy = Y - targetUnit.Y;
 
             return Math.Abs(dx) <= MaxStrikeRange && Math.Abs(dy) <= MaxStrikeRange;
         }
@@ -97,27 +97,27 @@ namespace Strategy.Domain.Models
         /// <summary>
         /// Атаковать юнита.
         /// </summary>
-        /// <param name="tu">Юнит, который является целью.</param>
-        public void Attack(Unit tu)
+        /// <param name="targetUnit">Юнит, который является целью.</param>
+        public void Attack(Unit targetUnit)
         {
-            var thp = tu.Health;
+            var targetUnitHealth = targetUnit.Health;
 
-            int d = this.Damage;
+            int damage = this.Damage;
 
-            var dx = this.X - tu.X;
-            var dy = this.Y - tu.Y;
+            var dx = this.X - targetUnit.X;
+            var dy = this.Y - targetUnit.Y;
 
             if (this is Archer || this is Catapult)
             {
                 if (Math.Abs(dx) <= 1 && Math.Abs(dy) <= 1)
                 {
-                    d /= 2;
+                    damage /= 2;
                 }
             }
 
-            tu.Health = Math.Max(thp - d, 0);
+            targetUnit.Health = Math.Max(targetUnitHealth - damage, 0);
         }
 
-
+        public override bool IsSafeForMovement => false;
     }
 }

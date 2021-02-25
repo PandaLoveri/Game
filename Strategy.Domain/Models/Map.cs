@@ -36,17 +36,17 @@ namespace Strategy.Domain.Models
         /// </returns>
         public bool CanMoveUnit(int x, int y)
         {
-            foreach (GameElement g in this.Ground)
+            foreach (GameElement gameElement in this.Ground)
             {
-                if (g is Water w && w.X == x && w.Y == y)
+                if (!gameElement.IsSafeForMovement && gameElement.X==x && gameElement.Y==y)
                 {
                     return false;
                 }
             }
 
-            foreach (Unit u1 in this.Units)
+            foreach (Unit unit in this.Units)
             {
-                if (u1.X == x && u1.Y == y)
+                if (unit.X == x && unit.Y == y)
                     return false;
             }
 

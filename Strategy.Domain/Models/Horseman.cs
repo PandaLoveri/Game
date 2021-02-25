@@ -17,9 +17,7 @@ namespace Strategy.Domain.Models
         public override int MaxStrikeRange => 1;
 
         public override int Damage => 75;
-
-        //перегруженный метод получения картинки с присвоением
-        //public override ImageSource GameElementSource => new BitmapImage(new Uri("Resources/Units/Horseman.png", UriKind.Relative));
+                
         public override ImageSource GameElementSource
         {
             get

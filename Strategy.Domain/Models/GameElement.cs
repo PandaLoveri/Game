@@ -23,5 +23,10 @@ namespace Strategy.Domain.Models
         /// Картинка объекта на карте.
         /// </summary>
         abstract public ImageSource GameElementSource { get; }
+
+        /// <summary>
+        /// Можно ли юниту ходить на это объект.
+        /// </summary>
+        abstract public bool IsSafeForMovement { get; }
     }
 }

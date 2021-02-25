@@ -15,5 +15,7 @@ namespace Strategy.Domain.Models
         //перегруженный метод получения картинки с присвоением
         public override ImageSource GameElementSource => new BitmapImage(new Uri("Resources/Ground/Water.png", UriKind.Relative));
 
+        public override bool IsSafeForMovement => false;
+
     }
 }
