@@ -21,27 +21,6 @@ namespace GameInterface
     /// </summary>
     public partial class GamePage : Page
     {
-        /// <summary>
-        /// Структура координат карты
-        /// </summary>
-        public struct MapCoordinates
-        {
-            /// <summary>
-            /// Строка
-            /// </summary>
-            public sbyte Row { get; set; }
-            /// <summary>
-            /// Колонка
-            /// </summary>
-            public sbyte Column { get; set; }
-            public MapCoordinates(sbyte row, sbyte column)
-            {
-                Row = row;
-                Column = column;
-            }
-        }
-
-
         Player FirstPlayer, SecondPlayer;
         Button[,] Battleground = new Button[16, 20];
 
@@ -61,7 +40,6 @@ namespace GameInterface
             #endregion
 
             #region Создание поля битвы (кнопок)
-
             for (sbyte row = 0; row < 16; row++)
             {
                 for (sbyte column = 0; column < 20; column++)
@@ -127,7 +105,7 @@ namespace GameInterface
 
         public void ButtonClick(Coordinates coords)
         {
-            //((Grid)(Battleground[coords.Row, coords.Column].Content)).Children.Add(GenerateSelectedSquare(Brushes.Red)); // проверка отрисовки по нажатию кнопки
+            //((Grid)(Battleground[coords.X, coords.Y].Content)).Children.Add(GenerateSelectedSquare(Brushes.Red)); // проверка отрисовки по нажатию кнопки
             #region Отображение фигур
             Image img = GeneratePieceImage();
             ((Grid)(Battleground[coords.X, coords.Y].Content)).Children.RemoveRange(0, 2);

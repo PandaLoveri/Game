@@ -25,7 +25,6 @@ namespace GameInterface
             InitializeComponent();
         }
 
-
         /// <summary>
         /// Эвент нажатия кнопки "Старт".
         /// </summary>

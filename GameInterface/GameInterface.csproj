@@ -110,22 +110,22 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Archer.png" />
+    <Resource Include="Resources\Archer.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Catapult.png" />
+    <Resource Include="Resources\Catapult.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Dead.png" />
+    <Resource Include="Resources\Dead.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Horseman.png" />
+    <Resource Include="Resources\Horseman.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Swordsman.png" />
+    <Resource Include="Resources\Swordsman.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\fon.jpg" />
+    <Resource Include="Resources\fon.jpg" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Strategy.Domain\Strategy.Domain.csproj">
