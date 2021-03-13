@@ -24,5 +24,15 @@ namespace GameInterface
         {
             InitializeComponent();
         }
+
+
+        /// <summary>
+        /// Эвент нажатия кнопки "Старт".
+        /// </summary>
+        private void StartButton_Click(object sender, RoutedEventArgs e)
+        {
+
+            this.NavigationService.Navigate(new GamePage(Player1NameTextBox.Text, Player2NameTextBox.Text));
+        }
     }
 }

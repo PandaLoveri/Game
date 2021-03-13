@@ -5,10 +5,87 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:GameInterface"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="768" d:DesignWidth="1248"
       Title="GamePage">
 
-    <Grid>
-        
+    <Grid >
+        <Grid.Background>
+            <ImageBrush ImageSource="Resources/fon.jpg" />
+        </Grid.Background>
+
+        <Border BorderBrush="Black" BorderThickness="1" Margin="25,25,0,64" HorizontalAlignment="Left" Width="923">
+            <!-- Поле -->
+            <Grid Name="Battlefield" Grid.Row="1" Grid.Column="1" PreviewMouseLeftButtonDown="Battlefield_PreviewMouseLeftButtonDown" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+            </Grid>
+        </Border>
+
+        <!-- Очередь player -->
+        <Border BorderBrush="Black" BorderThickness="1" Margin="976,25,25,0" Background="White" Height="99" VerticalAlignment="Top">
+            <StackPanel>
+                <TextBlock TextWrapping="Wrap" Text="Ход игрока:" FontSize="22" TextAlignment="Center" Margin="0,10,0,0"/>
+                <TextBlock TextWrapping="Wrap" Text="" FontSize="22" TextAlignment="Center"/>
+
+            </StackPanel>
+        </Border>
+
+        <!-- Статус игры / unit -->
+        <Border BorderBrush="Black" BorderThickness="1" Margin="976,154,25,210" Background="White">
+            <StackPanel>
+                <TextBlock TextWrapping="Wrap" Text="Владелец:" FontSize="22" TextAlignment="Center" Margin="0,10,0,0"/>
+                <TextBlock TextWrapping="Wrap" Text="" FontSize="22" TextAlignment="Center"/>
+                <TextBlock TextWrapping="Wrap" Text="Здоровье:" FontSize="22" TextAlignment="Center" Margin="0,10,0,0"/>
+                <TextBlock TextWrapping="Wrap" Text="" FontSize="22" TextAlignment="Center"/>
+
+            </StackPanel>
+        </Border>
+
+        <!-- Кнопки  -->
+        <Button x:Name="NewGameButton"  Content="Новая игра" Margin="976,0,25,136" FontSize="24"  Height="50" VerticalAlignment="Bottom" Click="NewGameButton_Click"/>
+        <Button x:Name="BackButton"  Content="Назад" Margin="976,0,25,64" FontSize="24"  Height="50" VerticalAlignment="Bottom" Click="BackButton_Click"/>
+
+        <!-- Copyrights  -->
+        <Label Content="Copyrights ⓒ 2021 Якупова/Есина. Rights Reserved." Margin="465,0,465,10" Foreground="White" Height="26" VerticalAlignment="Bottom"/>
+
     </Grid>
 </Page>
+

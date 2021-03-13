@@ -23,6 +23,8 @@ namespace GameInterface
         public MainWindow()
         {
             InitializeComponent();
+            HomePage hp = new HomePage();
+            Screen.NavigationService.Navigate(hp);
         }
     }
 }

@@ -5,10 +5,21 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:GameInterface"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="HomePage">
+      d:DesignHeight="768" d:DesignWidth="1248"
+      Title="HomePage" Background="White">
 
     <Grid>
-        
+        <Grid.Background>
+            <ImageBrush ImageSource="Resources/fon.jpg" />
+        </Grid.Background>
+
+        <Button x:Name="StartButton"  Content="Старт" Margin="876,0,0,88" FontSize="24" Click="StartButton_Click" HorizontalAlignment="Left" Width="315" Height="50" VerticalAlignment="Bottom"/>
+        <TextBox x:Name="Player1NameTextBox" Margin="991,474,0,0" TextWrapping="Wrap" Text="Player1" FontSize="22" HorizontalAlignment="Left" Width="200" Height="36" VerticalAlignment="Top"/>
+        <TextBox x:Name="Player2NameTextBox" Margin="991,530,0,0" TextWrapping="Wrap" Text="Player2" FontSize="22" HorizontalAlignment="Left" Width="200" Height="36" VerticalAlignment="Top"/>
+
+        <Label Content="Copyrights ⓒ 2021 Якупова/Есина. Rights Reserved." Margin="465,0,465,10" Foreground="White" Height="26" VerticalAlignment="Bottom"/>
+        <TextBlock HorizontalAlignment="Left" Margin="876,475,0,0" TextWrapping="Wrap" Text="Игрок №1" VerticalAlignment="Top" FontSize="22" Height="30" TextAlignment="Center"/>
+        <TextBlock HorizontalAlignment="Left" Margin="876,531,0,0" TextWrapping="Wrap" Text="Игрок №2" VerticalAlignment="Top" FontSize="22" Height="30" TextAlignment="Center"/>
+
     </Grid>
 </Page>
