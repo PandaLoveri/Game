@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GameInterface"
         mc:Ignorable="d"
-         Title="Strategy" Height="768" Width="1248">
+         Title="Strategy" Height="750" Width="1400">
 
     <Frame x:Name="Screen" NavigationUIVisibility="Hidden" />
 </Window>

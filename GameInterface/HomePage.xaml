@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:GameInterface"
       mc:Ignorable="d" 
-      d:DesignHeight="768" d:DesignWidth="1248"
+      d:DesignHeight="750" d:DesignWidth="1400"
       Title="HomePage" Background="White">
 
     <Grid>
@@ -13,13 +13,39 @@
             <ImageBrush ImageSource="Resources/fon.jpg" />
         </Grid.Background>
 
-        <Button x:Name="StartButton"  Content="Старт" Margin="876,0,0,88" FontSize="24" Click="StartButton_Click" HorizontalAlignment="Left" Width="315" Height="50" VerticalAlignment="Bottom"/>
-        <TextBox x:Name="Player1NameTextBox" Margin="991,474,0,0" TextWrapping="Wrap" Text="Player1" FontSize="22" HorizontalAlignment="Left" Width="200" Height="36" VerticalAlignment="Top"/>
-        <TextBox x:Name="Player2NameTextBox" Margin="991,530,0,0" TextWrapping="Wrap" Text="Player2" FontSize="22" HorizontalAlignment="Left" Width="200" Height="36" VerticalAlignment="Top"/>
+        <Button x:Name="StartButton"  Content="Старт" Margin="542,0,542,68" FontSize="24" Click="StartButton_Click" Height="50" VerticalAlignment="Bottom"/>
 
-        <Label Content="Copyrights ⓒ 2021 Якупова/Есина. Rights Reserved." Margin="465,0,465,10" Foreground="White" Height="26" VerticalAlignment="Bottom"/>
-        <TextBlock HorizontalAlignment="Left" Margin="876,475,0,0" TextWrapping="Wrap" Text="Игрок №1" VerticalAlignment="Top" FontSize="22" Height="30" TextAlignment="Center"/>
-        <TextBlock HorizontalAlignment="Left" Margin="876,531,0,0" TextWrapping="Wrap" Text="Игрок №2" VerticalAlignment="Top" FontSize="22" Height="30" TextAlignment="Center"/>
+        <TextBlock  Text="Copyrights ⓒ 2021 Якупова/Есина. Rights Reserved." TextAlignment="Center" Margin="465,0,465,10" Foreground="White" Height="26" VerticalAlignment="Bottom" />
+
+        <!-- player 1 -->
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="418" Margin="55,55,0,0" VerticalAlignment="Top" Width="300" Background="#FF9990A3">
+            <Grid>
+                <TextBox x:Name="Player1NameTextBox" Margin="48,65,0,0" TextWrapping="Wrap" Text="Player1" FontSize="22" HorizontalAlignment="Left" Width="200" Height="36" VerticalAlignment="Top"/>
+                <TextBlock HorizontalAlignment="Left" Margin="0,30,0,0" TextWrapping="Wrap" Text="Игрок №1" VerticalAlignment="Top" FontSize="22" Height="30" TextAlignment="Center" Width="295"/>
+                <ComboBox x:Name="Player1ComboBox" SelectionChanged="ComboBox1_Selected"  HorizontalAlignment="Left" Margin="48,120,0,0" VerticalAlignment="Top" Width="200" Height="36" FontSize="20">
+                    <TextBlock FontSize="16">Archer</TextBlock>
+                    <TextBlock FontSize="16">Swordsman</TextBlock>
+                    <TextBlock FontSize="16">Catapult</TextBlock>
+                    <TextBlock FontSize="16">Horseman</TextBlock>
+                </ComboBox>
+                <Image x:Name="Player1Image" HorizontalAlignment="Left" Height="200" Margin="48,178,0,0" VerticalAlignment="Top" Width="200"/>
+            </Grid>
+        </Border>
+
+        <!-- player 2 -->
+        <Border BorderBrush="Black" BorderThickness="1" Height="418" Margin="0,55,55,0" VerticalAlignment="Top" Background="#FF9990A3" HorizontalAlignment="Right" Width="300">
+            <Grid>
+                <TextBox x:Name="Player2NameTextBox" Margin="48,65,0,0" TextWrapping="Wrap" Text="Player2" FontSize="22" HorizontalAlignment="Left" Width="200" Height="36" VerticalAlignment="Top"/>
+                <TextBlock HorizontalAlignment="Left" Margin="0,30,0,0" TextWrapping="Wrap" Text="Игрок №2" VerticalAlignment="Top" FontSize="22" Height="30" TextAlignment="Center" Width="295"/>
+                <ComboBox x:Name="Player2ComboBox" SelectionChanged="ComboBox2_Selected" HorizontalAlignment="Left" Margin="48,120,0,0" VerticalAlignment="Top" Width="200" Height="36" FontSize="20">
+                    <TextBlock FontSize="16">Archer</TextBlock>
+                    <TextBlock FontSize="16">Swordsman</TextBlock>
+                    <TextBlock FontSize="16">Catapult</TextBlock>
+                    <TextBlock FontSize="16">Horseman</TextBlock>
+                </ComboBox>
+                <Image  x:Name="Player2Image" HorizontalAlignment="Left" Height="200" Margin="48,178,0,0" VerticalAlignment="Top" Width="200"/>
+            </Grid>
+        </Border>
 
     </Grid>
 </Page>

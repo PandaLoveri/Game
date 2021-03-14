@@ -99,6 +99,7 @@
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
@@ -110,19 +111,19 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Archer.png" />
+    <Resource Include="Resources\Units\Archer.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Catapult.png" />
+    <Resource Include="Resources\Units\Catapult.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Dead.png" />
+    <Resource Include="Resources\Units\Dead.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Horseman.png" />
+    <Resource Include="Resources\Units\Horseman.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Swordsman.png" />
+    <Resource Include="Resources\Units\Swordsman.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\fon.jpg" />

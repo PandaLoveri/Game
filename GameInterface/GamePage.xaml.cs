@@ -24,22 +24,47 @@ namespace GameInterface
         Player FirstPlayer, SecondPlayer;
         Button[,] Battleground = new Button[16, 20];
 
+        #region Фигуры
+        Archer[] archers1 = new Archer[4];
+        Archer[] archers2 = new Archer[4];
+        Swordsman[] swordsman1 = new Swordsman[4];
+        Swordsman[] swordsman2 = new Swordsman[4];
+        #endregion
+
         /// <summary>
         /// Инициализация компонентов
         /// </summary>        
-        public GamePage(string Player1Name = "", string Player2Name = "")
+        public GamePage(string Player1Name = "", string Player2Name = "", string Player1ImageUri = "", string Player2ImageUri = "")
         {
             InitializeComponent();
 
             #region Инициализирование игроков
 
-            FirstPlayer = new Player(1, Player1Name, new BitmapImage(new Uri("pack://application:,,,/Resources/Dead.png")));
-            SecondPlayer = new Player(2, Player2Name, new BitmapImage(new Uri("pack://application:,,,/Resources/Dead.png")));
+            FirstPlayer = new Player(1, Player1Name, new BitmapImage(new Uri($"Resources/Units/{Player1ImageUri}.png", UriKind.Relative)) );
+            SecondPlayer = new Player(2, Player2Name, new BitmapImage(new Uri($"Resources/Units/{Player2ImageUri}.png", UriKind.Relative)) );
 
-            // MessageBox.Show($"{Player1Name} и {Player2Name} "); // проверка передачи данных с 1 окна
+            // MessageBox.Show($"{Player1ImageUri} и {Player2Name} "); // проверка передачи данных с 1 окна
+            #endregion
+            PlayerNameTextBox.Text = FirstPlayer.Name;
+            PlayerImage.Source = FirstPlayer.Portrait;
+
+            #region Добавление моделей
+            for (int i = 0; i < archers1.Length; i++)
+            {
+                archers1[i] = new Archer(FirstPlayer);
+                swordsman1[i] = new Swordsman(FirstPlayer);
+            }
+
+            for (int i = 0; i < archers2.Length; i++)
+            {
+                archers2[i] = new Archer(SecondPlayer);
+                swordsman2[i] = new Swordsman(SecondPlayer);
+            }
+
             #endregion
 
             #region Создание поля битвы (кнопок)
+
             for (sbyte row = 0; row < 16; row++)
             {
                 for (sbyte column = 0; column < 20; column++)
@@ -66,7 +91,7 @@ namespace GameInterface
                     //var brush = new ImageBrush();
                     //brush.ImageSource = new BitmapImage(new Uri("pack://application:,,,/Resources/Dead.png"));
                     //button.Background = brush;                             
-
+                                       
                     Grid g = new Grid();
                     g.Children.Add(new UIElement());
                     g.Children.Add(new UIElement());
@@ -78,7 +103,14 @@ namespace GameInterface
             }
             #endregion
 
+        }
 
+        public void AddModels(Coordinates coords, string model)
+        {
+            Image img = GeneratePieceImage(model);
+            ((Grid)(Battleground[coords.X, coords.Y].Content)).Children.RemoveRange(0, 2);
+            ((Grid)(Battleground[coords.X, coords.Y].Content)).Children.Add(new UIElement());
+            ((Grid)(Battleground[coords.X, coords.Y].Content)).Children.Add(img);
         }
 
         /// <summary>
@@ -86,12 +118,14 @@ namespace GameInterface
         /// </summary>
         Rectangle GenerateSelectedSquare(Brush color)
         {
-            Rectangle selectedSquare = new Rectangle();
-            selectedSquare.Fill = color;
-            selectedSquare.Opacity = 0.3;
-            selectedSquare.Stretch = Stretch.UniformToFill;
-            selectedSquare.HorizontalAlignment = HorizontalAlignment.Stretch;
-            selectedSquare.IsHitTestVisible = false;
+            Rectangle selectedSquare = new Rectangle
+            {
+                Fill = color,
+                Opacity = 0.3,
+                Stretch = Stretch.UniformToFill,
+                HorizontalAlignment = HorizontalAlignment.Stretch,
+                IsHitTestVisible = false
+            };
             return selectedSquare;
         }
 
@@ -105,13 +139,7 @@ namespace GameInterface
 
         public void ButtonClick(Coordinates coords)
         {
-            //((Grid)(Battleground[coords.X, coords.Y].Content)).Children.Add(GenerateSelectedSquare(Brushes.Red)); // проверка отрисовки по нажатию кнопки
-            #region Отображение фигур
-            Image img = GeneratePieceImage();
-            ((Grid)(Battleground[coords.X, coords.Y].Content)).Children.RemoveRange(0, 2);
-            ((Grid)(Battleground[coords.X, coords.Y].Content)).Children.Add(new UIElement());
-            ((Grid)(Battleground[coords.X, coords.Y].Content)).Children.Add(img);
-            #endregion
+            ((Grid)(Battleground[coords.X, coords.Y].Content)).Children.Add(GenerateSelectedSquare(Brushes.Red)); // проверка отрисовки по нажатию кнопки
 
         }
 
@@ -132,12 +160,17 @@ namespace GameInterface
         /// <param name="pc">Based on square it generates the respective image of the piece</param>
         /// <param name="forWrapPanel">Whether to generate the image for the wrap panel of lost pieces</param>
         /// <returns></returns>
-        Image GeneratePieceImage()
+        Image GeneratePieceImage(string model)
         {
             Image image = new Image() { IsHitTestVisible = false };
             image.SetValue(RenderOptions.BitmapScalingModeProperty, BitmapScalingMode.Fant);
 
-            image.Source = new BitmapImage(new Uri("pack://application:,,,/Resources/Dead.png"));
+            //image.Source = new BitmapImage(new Uri("pack://application:,,,/Resources/Dead.png"));
+            switch (model)
+            {
+                case "Archer": image.Source = archers1[0].GameElementSource; break;
+                case "Swordsman": image.Source = swordsman1[0].GameElementSource; break;
+            }
             return image;
         }
 
